@@ -1,0 +1,130 @@
+[gd_scene load_steps=7 format=3 uid="uid://cwxnvsxfkmv5k"]
+
+[ext_resource type="Script" uid="uid://5a1igykj48fe" path="res://joblist_ui/view/JobPanelView.gd" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://cy0ffpx46cm8x" path="res://joblist_ui/nodes/skill_label.tscn" id="2_0xm2m"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7dm0k"]
+font_size = 12
+
+[sub_resource type="LabelSettings" id="LabelSettings_ig7tw"]
+font_size = 12
+
+[sub_resource type="LabelSettings" id="LabelSettings_0xm2m"]
+font_size = 12
+
+[sub_resource type="LabelSettings" id="LabelSettings_h2yge"]
+font_size = 12
+
+[node name="main" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="JobPanel" type="Panel" parent="CanvasLayer" node_paths=PackedStringArray("options", "jobDesc", "skillsContainer")]
+offset_left = 87.0
+offset_top = 64.0
+offset_right = 463.0
+offset_bottom = 509.0
+script = ExtResource("1_ig7tw")
+options = NodePath("jobOption/OptionButton")
+jobDesc = NodePath("jobDescription/desc")
+skillsContainer = NodePath("skills/ScrollContainer/GridContainer")
+skillLabel = ExtResource("2_0xm2m")
+
+[node name="jobOption" type="Control" parent="CanvasLayer/JobPanel"]
+anchors_preset = 0
+offset_left = 16.0
+offset_top = 12.0
+offset_right = 164.0
+offset_bottom = 52.0
+
+[node name="Label" type="Label" parent="CanvasLayer/JobPanel/jobOption"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -11.0
+offset_right = 51.0
+offset_bottom = 12.0
+grow_vertical = 2
+text = "Job:"
+label_settings = SubResource("LabelSettings_7dm0k")
+vertical_alignment = 1
+
+[node name="OptionButton" type="OptionButton" parent="CanvasLayer/JobPanel/jobOption"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="jobDescription" type="Control" parent="CanvasLayer/JobPanel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 16.0
+offset_top = 56.0
+offset_right = -22.0
+offset_bottom = 193.0
+grow_horizontal = 2
+
+[node name="descLabel" type="Label" parent="CanvasLayer/JobPanel/jobDescription"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Description :"
+label_settings = SubResource("LabelSettings_ig7tw")
+
+[node name="desc" type="Label" parent="CanvasLayer/JobPanel/jobDescription"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 28.0
+offset_right = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Lorem ipsum dolor si amet"
+label_settings = SubResource("LabelSettings_0xm2m")
+autowrap_mode = 3
+
+[node name="skills" type="Control" parent="CanvasLayer/JobPanel"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 23.0
+offset_top = -248.0
+offset_right = -20.0
+offset_bottom = -96.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="CanvasLayer/JobPanel/skills"]
+layout_mode = 0
+offset_right = 38.0
+offset_bottom = 17.0
+text = "Skills: "
+label_settings = SubResource("LabelSettings_h2yge")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/JobPanel/skills"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/JobPanel/skills/ScrollContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 2
