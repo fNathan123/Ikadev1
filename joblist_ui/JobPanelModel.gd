@@ -1,6 +1,7 @@
 class_name JobPanelModel
+extends RefCounted
 
-var dataDictionary : Dictionary
+var data_dictionary : Dictionary
 
 func _init() -> void:
     var result = {};
@@ -32,4 +33,4 @@ func _init() -> void:
     else:
         push_error("Failed to open CSV file: res://class.csv");
     
-    dataDictionary = result;
+    data_dictionary = result;

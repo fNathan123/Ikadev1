@@ -19,16 +19,16 @@ font_size = 12
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="JobPanel" type="Panel" parent="CanvasLayer" node_paths=PackedStringArray("options", "jobDesc", "skillsContainer")]
+[node name="JobPanel" type="Panel" parent="CanvasLayer" node_paths=PackedStringArray("options", "job_desc", "skills_container")]
 offset_left = 87.0
 offset_top = 64.0
 offset_right = 463.0
 offset_bottom = 509.0
 script = ExtResource("1_ig7tw")
 options = NodePath("jobOption/OptionButton")
-jobDesc = NodePath("jobDescription/desc")
-skillsContainer = NodePath("skills/ScrollContainer/GridContainer")
-skillLabel = ExtResource("2_0xm2m")
+job_desc = NodePath("jobDescription/desc")
+skills_container = NodePath("skills/ScrollContainer/GridContainer")
+skill_label = ExtResource("2_0xm2m")
 
 [node name="jobOption" type="Control" parent="CanvasLayer/JobPanel"]
 anchors_preset = 0

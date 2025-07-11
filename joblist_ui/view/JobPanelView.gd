@@ -3,11 +3,11 @@ class_name  JobPanelView
 extends Node
 
 @export var options : OptionButton;
-@export var jobDesc : Label;
-@export var skillsContainer : GridContainer;
-@export var skillLabel : PackedScene;
+@export var job_desc : Label;
+@export var skills_container : GridContainer;
+@export var skill_label : PackedScene;
 
-var currentSelectedJob : int = -1;
+var curren_selected_job : int = -1;
 
 var presenter : JobPanelPresenter;
 
@@ -25,33 +25,34 @@ func refresh() -> void :
 		for job in classes:
 			options.add_item(job);
 	
-	if currentSelectedJob == -1:
-		currentSelectedJob = options.selected;
+	if curren_selected_job == -1:
+		curren_selected_job = options.selected;
 	
-	var key = options.get_item_text(currentSelectedJob);
+	var key = options.get_item_text(curren_selected_job);
 	var jobDetail = presenter.get_class_detail(key);
 	
 	if jobDetail.size() == 0:
 		push_error("JobPanelView : there is no such key:"+key);
 		return;
 	
-	jobDesc.text = jobDetail["description"];
+	job_desc.text = jobDetail["description"];
 
 	var skills = jobDetail["skills"].split(";",false);
 
-	for oldObj in skillsContainer.get_children():
+	for oldObj in skills_container.get_children():
 		oldObj.free();
 
 	for skill in skills:
-		var instance = skillLabel.instantiate();
+		var instance = skill_label.instantiate();
 		if(instance is SkillLabel):
 			var label : SkillLabel = instance;
 			label.set_text(skill);
-			skillsContainer.add_child(label);
+			skills_container.add_child(label);
 			label.resize_label();
 	
 func on_option_selected(option : int) -> void:
-	currentSelectedJob = option;
+	if curren_selected_job != option:
+		curren_selected_job = option;
 	refresh();
 
 	
